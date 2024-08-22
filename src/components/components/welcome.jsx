@@ -1,6 +1,6 @@
 import '../styling/welcome.css';
 
-function Welcome() {
+export default function Welcome() {
     return (
         <div className='welcome-container'>
             <div className='welcome'>
@@ -9,5 +9,3 @@ function Welcome() {
         </div>
     );
 }
-
-export default Welcome;
