@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from './routes/index';
+import { loader as categoriesLoader } from './routes/index';
 import ErrorPage from './error';
 
 const router = createBrowserRouter([
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
     errorElement: <ErrorPage />,
+    loader: categoriesLoader,
   },
 ]);
 

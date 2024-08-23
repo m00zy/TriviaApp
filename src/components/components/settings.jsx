@@ -1,27 +1,9 @@
 import '../styling/settings.css';
-import React, { useState, useEffect } from 'react';
-import { fetchCategories } from '../../services/triviaService'; 
 import { Form } from "react-router-dom";
 
-export default function Settings() {
+export default function Settings( {categories} ) {
     
-    const [categories, setCategories] = useState([]);
-    const [error, setError] = useState([]);
-
     const diffs = ['Easy', 'Medium', 'Hard'];
-
-    useEffect(() => {
-        const loadCategories = async () => {
-            const triviaCategories = await fetchCategories();
-            if (triviaCategories) {
-                setCategories(triviaCategories);
-            }
-            else {
-                setError('Failed to load categories');
-            }
-        };
-        loadCategories();
-    }, []);
 
     return (
         <div className='settings-container'>

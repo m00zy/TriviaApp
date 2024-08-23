@@ -9,7 +9,6 @@ export async function fetchCategories() {
             throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json();
-        console.log(data);
         return data.trivia_categories.map(item => item.name);
         
     }

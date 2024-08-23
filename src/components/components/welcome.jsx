@@ -1,5 +1,6 @@
 import '../styling/welcome.css';
 
+
 export default function Welcome() {
     return (
         <div className='welcome-container'>
