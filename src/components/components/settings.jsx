@@ -29,6 +29,9 @@ export default function Settings( {categories} ) {
                             })}
                         </select>
                     </div>
+                    <div className='submit'>
+                            <button type='submit'>Start Quiz</button>
+                    </div>
                 </Form>
             </div>
         </div>
