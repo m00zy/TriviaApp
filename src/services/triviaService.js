@@ -31,7 +31,7 @@ export async function fetchQuestions(numQuestions, category, difficulty) {
         
     }
     catch (error) {
-        console.error('Error fetching trivia categories:', error);
+        console.error('Error fetching trivia questions:', error);
         return null;
     }
 }
