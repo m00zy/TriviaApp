@@ -27,7 +27,7 @@ export async function fetchQuestions(numQuestions, category, difficulty) {
             throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json();
-        return data.trivia_categories.results;
+        return data.results;
         
     }
     catch (error) {
