@@ -16,8 +16,8 @@ export default function Settings( {categories} ) {
                     <div className='setting'>
                         <label htmlFor='category'>Category:</label>
                         <select name='category'>
-                        {categories.map((category) => {
-                                return <option key={category} value={category}>{category}</option>
+                        {categories.map((category, index) => {
+                                return <option key={category} value={index+9}>{category}</option> /* The category number is index + 9 */
                             })}
                         </select>
                     </div>
