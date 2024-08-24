@@ -1,6 +1,6 @@
 import Welcome from '../components/components/welcome';
 import Settings from '../components/components/settings';
-// import StartButton from '../components/components/startButton';
+import ResultsHistory from '../components/components/resultsHistory';
 import { fetchCategories } from '../services/triviaService';
 import { useLoaderData } from 'react-router-dom'; 
 
@@ -16,6 +16,7 @@ export default function Home () {
         <div>
             <Welcome />
             <Settings categories={categories}/>
+            <ResultsHistory />
         </div>
     );
 }

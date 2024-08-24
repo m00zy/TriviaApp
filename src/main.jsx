@@ -9,6 +9,7 @@ import QuestionPage from './routes/questionPage';
 import Results from './routes/results';
 import { loader as categoriesLoader } from './routes/index';
 import ErrorPage from './error';
+import { QuizProvider } from './quizContext';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QuizProvider>
+      <RouterProvider router={router} />
+    </QuizProvider>
   </StrictMode>,
 )

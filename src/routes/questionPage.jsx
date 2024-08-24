@@ -1,6 +1,7 @@
 import { useLocation, useNavigate, Form } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { fetchQuestions } from '../services/triviaService';
+import { QuizContext } from '../quizContext';
 
 import he from 'he';
 
@@ -8,6 +9,7 @@ export default function QuestionPage() {
     const [questions, setQuestions] = useState([]);
     const [questionIndex, setQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
+    const { addResult } = useContext(QuizContext);
     const location = useLocation();
     const settings = location.state;
     const navigate = useNavigate()
@@ -36,7 +38,6 @@ export default function QuestionPage() {
     const currQuestion = questions[questionIndex];
     const allAnswers = [currQuestion.correct_answer, ... currQuestion.incorrect_answers].sort(() => Math.random() - 0.5);
     
-
     const handleSubmit = (e) => {
         e.preventDefault();
         formRef.current.reset();
@@ -46,6 +47,16 @@ export default function QuestionPage() {
         }
         
         if(questionIndex === questions.length - 1) {
+            
+            const result = {
+                'score': score,
+                'category': settings.category,
+                'num-questions': settings.numQuestions,
+                'difficulty': settings.difficulty,
+            };
+
+            addResult(result);
+
             navigate('/results', {state: {
                 score: score
             }});
