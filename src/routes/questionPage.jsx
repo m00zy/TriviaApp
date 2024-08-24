@@ -1,9 +1,12 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Form } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchQuestions } from '../services/triviaService';
+import he from 'he';
 
 export default function QuestionPage() {
     const [questions, setQuestions] = useState([]);
+    const [questionIndex, setQuestionIndex] = useState(0);
+    const [score, setScore] = useState(0);
     const location = useLocation();
     const settings = location.state;
 
@@ -23,8 +26,55 @@ export default function QuestionPage() {
         fetchData();
     }, []);
 
+    if (questions.length === 0) {
+        return <p>Loading</p>;
+    }
+
+    const currQuestion = questions[questionIndex];
+    const allAnswers = [currQuestion.correct_answer, ... currQuestion.incorrect_answers].sort(() => Math.random() - 0.5);
+    
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        if(formData.get('answer') === currQuestion.correct_answer) {
+            setScore(score => score + 1);
+        }
+        
+        setQuestionIndex(questionIndex => questionIndex + 1)
+    }
+    
     return (
-        <div>
+        <div className='question-page'>
+            <div className='question-header-container'>
+                <div className='question-header'>
+                    <p>Question {questionIndex + 1}</p>
+                </div>
+            </div>
+            <div className='question-container'>
+                <div className='question'>
+                    <p>{he.decode(currQuestion.question)}</p>
+                    <Form onSubmit={handleSubmit}>
+                        {allAnswers.map((answer, index) => (
+                            <div key={index}>
+                                <input 
+                                    type="radio" 
+                                    id={`answer-${index}`} 
+                                    value={answer} 
+                                    name='answer'
+                                />
+                                <label htmlFor={`answer-${index}`}>{he.decode(answer)}</label>
+                            </div>
+                        ))}
+                        <input type='submit' value='Submit'></input>
+                    </Form>
+                </div>
+            </div>
+            <div className='score-container'>
+                <div className='score'>
+                    <p>{score}/{questionIndex}</p>
+                </div>
+            </div>
         </div>
     );
 }

@@ -19,7 +19,7 @@ export async function fetchCategories() {
 }
 
 export async function fetchQuestions(numQuestions, category, difficulty) {
-    const url = BASE_URL + `/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}`;
+    const url = BASE_URL + `/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`;
 
     try {
         const response = await fetch(url);
