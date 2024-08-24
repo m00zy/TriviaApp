@@ -30,7 +30,7 @@ export default function QuestionPage() {
     }, []);
 
     if (!questions.length) {
-        return <p>Loading</p>;
+        return <p>Loading...</p>;
     }
 
     const currQuestion = questions[questionIndex];
