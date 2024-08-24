@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, Form } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { fetchQuestions } from '../services/triviaService';
 
 import he from 'he';
@@ -11,6 +11,7 @@ export default function QuestionPage() {
     const location = useLocation();
     const settings = location.state;
     const navigate = useNavigate()
+    const formRef = useRef(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,6 +39,7 @@ export default function QuestionPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        formRef.current.reset();
         const formData = new FormData(e.target);
         if(formData.get('answer') === currQuestion.correct_answer) {
             setScore(score => score + 1);
@@ -63,7 +65,7 @@ export default function QuestionPage() {
             <div className='question-container'>
                 <div className='question'>
                     <p>{he.decode(currQuestion.question)}</p>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit} ref={formRef}>
                         {allAnswers.map((answer, index) => (
                             <div key={index}>
                                 <input 
