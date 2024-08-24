@@ -39,7 +39,7 @@ export default function Settings( {categories} ) {
                     <label htmlFor='difficulty'>Quiz Difficulty:</label>
                         <select name='difficulty'>
                             {diffs.map((diff) => {
-                                return <option key={diff} value={diff}>{diff}</option>
+                                return <option key={diff} value={diff.toLowerCase()}>{diff}</option>
                             })}
                         </select>
                     </div>
