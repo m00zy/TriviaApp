@@ -1,6 +1,7 @@
-import { useLocation, Form } from 'react-router-dom';
+import { useLocation, useNavigate, Form } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchQuestions } from '../services/triviaService';
+
 import he from 'he';
 
 export default function QuestionPage() {
@@ -9,6 +10,7 @@ export default function QuestionPage() {
     const [score, setScore] = useState(0);
     const location = useLocation();
     const settings = location.state;
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,7 +28,7 @@ export default function QuestionPage() {
         fetchData();
     }, []);
 
-    if (questions.length === 0) {
+    if (!questions.length) {
         return <p>Loading</p>;
     }
 
@@ -41,14 +43,21 @@ export default function QuestionPage() {
             setScore(score => score + 1);
         }
         
-        setQuestionIndex(questionIndex => questionIndex + 1)
+        if(questionIndex === questions.length - 1) {
+            navigate('/results', {state: {
+                score: score
+            }});
+        }
+        else{
+            setQuestionIndex(questionIndex => questionIndex + 1);
+        }
     }
     
     return (
         <div className='question-page'>
             <div className='question-header-container'>
                 <div className='question-header'>
-                    <p>Question {questionIndex + 1}</p>
+                    <p>Question {questionIndex + 1} / {questions.length}</p>
                 </div>
             </div>
             <div className='question-container'>
@@ -71,10 +80,13 @@ export default function QuestionPage() {
                 </div>
             </div>
             <div className='score-container'>
-                <div className='score'>
-                    <p>{score}/{questionIndex}</p>
-                </div>
+                {questionIndex > 0 ? (
+                    <div className='score'>
+                        <p>Score: {score} / {questionIndex}</p>
+                    </div>
+                ) : null}
             </div>
+
         </div>
     );
 }
