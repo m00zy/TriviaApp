@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, Form } from 'react-router-dom';
 import { useState, useEffect, useRef, useContext } from 'react';
-import { fetchQuestions } from '../services/triviaService';
+import { fetchQuestions, fetchToken } from '../services/triviaService';
 import { QuizContext } from '../quizContext';
 
 import he from 'he';
@@ -16,19 +16,30 @@ export default function QuestionPage() {
     const formRef = useRef(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = async (sessionToken) => {
             try {
                 const data = await fetchQuestions(
                     settings.numQuestions,
                     settings.category,
-                    settings.difficulty
+                    settings.difficulty,
+                    sessionToken,
                 );
                 setQuestions(data);
             } catch (error) {
-                console.error("Error fetching questions:", error);
+                console.error('Error fetching questions:', error);
             }
         };
-        fetchData();
+
+        const fetchTokenData = async () => {
+            try {
+                const newToken = await fetchToken();
+                fetchData(newToken);
+            } catch (error) {
+                console.error('Error fetching session token:', error);
+            }
+        };
+    
+        fetchTokenData();
     }, []);
 
     if (!questions.length) {

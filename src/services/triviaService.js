@@ -18,8 +18,26 @@ export async function fetchCategories() {
     }
 }
 
-export async function fetchQuestions(numQuestions, category, difficulty) {
-    const url = BASE_URL + `/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`;
+export async function fetchToken() {
+    const url = BASE_URL + '/api_token.php?command=request';
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json();
+        return data.token;
+        
+    }
+    catch (error) {
+        console.error('Error fetching session token:', error);
+        return null;
+    }
+}
+
+export async function fetchQuestions(numQuestions, category, difficulty, sessionToken) {
+    const url = BASE_URL + `/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple&token=${sessionToken}`;
 
     try {
         const response = await fetch(url);
