@@ -1,4 +1,6 @@
 import { useRouteError } from 'react-router-dom';
+import HomeButton from './components/components/homeButton';
+import Home from './routes';
 
 function ErrorPage() {
     const error = useRouteError();
@@ -11,6 +13,7 @@ function ErrorPage() {
         <p>
         <i>{error.statusText || error.message}</i>
         </p>
+        <HomeButton />
     </div>
     );
 }

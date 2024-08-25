@@ -1,20 +1,15 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import HomeButton from '../components/components/homeButton';
+import { useLocation } from 'react-router-dom';
 
 export default function Results () {
-
-    const location = useLocation();
-    const state = location.state;
-    const score = state.score;
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('/');
-    };
     
+    const location = useLocation();
+    const score = location.state.score;
+
     return (
         <div>
             <p>Your final score is: {score}</p>
-            <button onClick={handleClick}>Home</button>
+            <HomeButton />
         </div>
     );
 }
