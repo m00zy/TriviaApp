@@ -9,13 +9,28 @@ export default function QuestionPage() {
     const [questions, setQuestions] = useState([]);
     const [questionIndex, setQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
+    const [selectedValue, setSelectedValue] = useState('');
     const { addResult } = useContext(QuizContext);
     const location = useLocation();
     const settings = location.state;
     const navigate = useNavigate()
     const formRef = useRef(null);
 
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
+    };
+
+    
     useEffect(() => {
+        const fetchTokenData = async () => {
+            try {
+                const newToken = await fetchToken();
+                fetchData(newToken);
+            } catch (error) {
+                console.error('Error fetching session token:', error);
+            }
+        };
+    
         const fetchData = async (sessionToken) => {
             try {
                 const data = await fetchQuestions(
@@ -24,18 +39,20 @@ export default function QuestionPage() {
                     settings.difficulty,
                     sessionToken,
                 );
-                setQuestions(data);
+
+                const questionsWithShuffledAnswers = data.map(question => {
+                    const allAnswers = [question.correct_answer, ...question.incorrect_answers];
+                    const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
+                
+                    return {
+                        ...question,
+                        shuffledAnswers, 
+                    };
+                });
+
+                setQuestions(questionsWithShuffledAnswers);
             } catch (error) {
                 console.error('Error fetching questions:', error);
-            }
-        };
-
-        const fetchTokenData = async () => {
-            try {
-                const newToken = await fetchToken();
-                fetchData(newToken);
-            } catch (error) {
-                console.error('Error fetching session token:', error);
             }
         };
     
@@ -47,7 +64,6 @@ export default function QuestionPage() {
     }
 
     const currQuestion = questions[questionIndex];
-    const allAnswers = [currQuestion.correct_answer, ... currQuestion.incorrect_answers].sort(() => Math.random() - 0.5);
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -88,18 +104,19 @@ export default function QuestionPage() {
                 <div className='question'>
                     <p>{he.decode(currQuestion.question)}</p>
                     <Form onSubmit={handleSubmit} ref={formRef}>
-                        {allAnswers.map((answer, index) => (
+                        {currQuestion.shuffledAnswers.map((answer, index) => (
                             <div key={index}>
                                 <input 
                                     type="radio" 
                                     id={`answer-${index}`} 
                                     value={answer} 
                                     name='answer'
+                                    onChange={handleChange}
                                 />
                                 <label htmlFor={`answer-${index}`}>{he.decode(answer)}</label>
                             </div>
                         ))}
-                        <input type='submit' value='Submit'></input>
+                        <input type='submit' value='Submit' disabled={!selectedValue}></input>
                     </Form>
                 </div>
             </div>
