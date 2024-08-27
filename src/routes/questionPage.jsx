@@ -67,6 +67,7 @@ export default function QuestionPage() {
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSelectedValue('');
         const formData = new FormData(e.target);
         if(formData.get('answer') === currQuestion.correct_answer) {
             setScore(score => score + 1);
