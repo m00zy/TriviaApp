@@ -25,7 +25,7 @@ export default function Settings( {categories} ) {
                 <Form onSubmit={handleSubmit}>
                     <div className='setting'>
                         <label htmlFor='num-questions'>Number of Questions:</label>
-                        <input type='text' name='num-questions' type='number' min='5' max='50'></input>
+                        <input name='num-questions' type='number' min='5' max='50' defaultValue='5'></input>
                     </div>
                     <div className='setting'>
                         <label htmlFor='category'>Category:</label>
