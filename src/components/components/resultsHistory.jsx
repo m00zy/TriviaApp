@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { QuizContext } from '../../QuizContext';
+import { QuizContext } from '../../quizContext';
 
 export default function ResultsHistory() {
     const { results } = useContext(QuizContext);
-
     return (
         <div className='results-history-container'>
             <p>Previous Results</p>
@@ -20,10 +19,10 @@ export default function ResultsHistory() {
                 <tbody>
                     {results.map((result, index) => (
                         <tr key={index}>
-                            <td>{result.category}</td>
-                            <td>{result.difficulty}</td>
-                            <td>{result.num_questions}</td>
-                            <td>{result.score}</td>
+                            <td>{result['category']}</td>
+                            <td>{result['difficulty']}</td>
+                            <td>{result['num-questions']}</td>
+                            <td>{result['score']}</td>
                         </tr>
                     ))}
                 </tbody>

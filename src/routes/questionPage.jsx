@@ -82,7 +82,6 @@ export default function QuestionPage() {
                 'num-questions': settings.numQuestions,
                 'difficulty': settings.difficulty,
             };
-
             addResult(result);
 
             navigate('/results', {state: {

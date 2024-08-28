@@ -8,7 +8,7 @@ export default function Results () {
 
     return (
         <div>
-            <p>Your final score is: {score}</p>
+            <p>Your final score is: {score}.</p>
             <HomeButton />
         </div>
     );
