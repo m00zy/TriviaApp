@@ -10,7 +10,6 @@ export default function QuestionPage() {
     const [questions, setQuestions] = useState([]);
     const [questionIndex, setQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
-    const [selectedValue, setSelectedValue] = useState('');
     const { addResult } = useContext(QuizContext);
     const location = useLocation();
     const settings = location.state;
@@ -64,7 +63,6 @@ export default function QuestionPage() {
         return <p>Loading...</p>;
     }
 
-
     const titleCase = (str) => {
         var splitStr = str.toLowerCase().split(' ');
         for (var i = 0; i < splitStr.length; i++) {
@@ -77,7 +75,6 @@ export default function QuestionPage() {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSelectedValue('');
         const formData = new FormData(e.target);
         if(formData.get('answer') === currQuestion.correct_answer) {
             setScore(score => score + 1);
@@ -121,14 +118,14 @@ export default function QuestionPage() {
                                 <input 
                                     type="radio" 
                                     id={`answer-${index}`} 
-                                    value={titleCase(answer)} 
+                                    value={answer} 
                                     name='answer'
-                                    onChange={handleChange}
+                                    required
                                 />
                                 <label htmlFor={`answer-${index}`}>{he.decode(answer)}</label>
                             </div>
                         ))}
-                        <input type='submit' value='Submit' disabled={!selectedValue}></input>
+                        <input type='submit' value='Submit'></input>
                     </Form>
                 </div>
             </div>
