@@ -15,7 +15,14 @@ export default function QuestionPage() {
     const settings = location.state;
     const navigate = useNavigate()
     const formRef = useRef(null);
+
     
+    function toTitleCase(str) {
+        return str.split(' ').map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }).join(' ');
+    }
+
     useEffect(() => {
         const fetchTokenData = async () => {
             try {
@@ -105,7 +112,7 @@ export default function QuestionPage() {
                                 <input 
                                     type="radio" 
                                     id={`answer-${index}`} 
-                                    value={answer} 
+                                    value={toTitleCase(answer)} 
                                     name='answer'
                                     required
                                 />
