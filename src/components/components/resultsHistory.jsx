@@ -20,7 +20,7 @@ export default function ResultsHistory(categories) {
                     {results.map((result, index) => (
                         <tr key={index}>
                             <td>{categories.categories[parseInt(result['category']) - 9]}</td>
-                            <td>{result['difficulty']}</td>
+                            <td>{result['difficulty'][0].toUpperCase() + result['difficulty'].slice(1)}</td>
                             <td>{result['num-questions']}</td>
                             <td>{result['score']}</td>
                         </tr>
