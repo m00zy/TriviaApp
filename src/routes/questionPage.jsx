@@ -2,6 +2,7 @@ import { useLocation, useNavigate, Form } from 'react-router-dom';
 import { useState, useEffect, useRef, useContext } from 'react';
 import { fetchQuestions, fetchToken } from '../services/triviaService';
 import { QuizContext } from '../quizContext';
+import './questionPage.css'
 
 import he from 'he';
 
@@ -112,6 +113,8 @@ export default function QuestionPage() {
             <div className='question-container'>
                 <div className='question'>
                     <p>{he.decode(currQuestion.question)}</p>
+                </div>
+                <div className='answers'>
                     <Form onSubmit={handleSubmit} ref={formRef}>
                         {currQuestion.shuffledAnswers.map((answer, index) => (
                             <div key={index}>
