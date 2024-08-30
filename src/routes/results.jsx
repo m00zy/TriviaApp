@@ -1,5 +1,6 @@
 import HomeButton from '../components/components/homeButton';
 import { useLocation } from 'react-router-dom';
+import './results.css';
 
 export default function Results () {
     
@@ -7,8 +8,8 @@ export default function Results () {
     const score = location.state.score;
 
     return (
-        <div>
-            <p>Your final score is: {score}.</p>
+        <div className='results-container'>
+            <p>Your final score is: {score}</p>
             <HomeButton />
         </div>
     );
