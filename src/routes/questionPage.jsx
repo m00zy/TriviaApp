@@ -63,6 +63,15 @@ export default function QuestionPage() {
         return <p>Loading...</p>;
     }
 
+
+    const titleCase = (str) => {
+        var splitStr = str.toLowerCase().split(' ');
+        for (var i = 0; i < splitStr.length; i++) {
+            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+        }
+        return splitStr.join(' '); 
+    }
+
     const currQuestion = questions[questionIndex];
     
     const handleSubmit = (e) => {
@@ -109,7 +118,7 @@ export default function QuestionPage() {
                                 <input 
                                     type="radio" 
                                     id={`answer-${index}`} 
-                                    value={answer} 
+                                    value={titleCase(answer)} 
                                     name='answer'
                                     onChange={handleChange}
                                 />
