@@ -1,3 +1,7 @@
+.question-page {
+    font-family:'Times New Roman', Times, serif
+}
+
 .question-header-container {
     display: flex;
     width: 100%;
@@ -19,12 +23,12 @@
 }
 
 .question p {
-    font-size: 40px;
+    font-size: 3.5rem;
 }
 
 .answers {
     display: flex;
-    justify-content: center; /* Center the form within the container */
+    justify-content: center; 
     width: 100%;
 }
 
