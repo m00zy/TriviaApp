@@ -15,11 +15,6 @@ export default function QuestionPage() {
     const settings = location.state;
     const navigate = useNavigate()
     const formRef = useRef(null);
-
-    const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-    };
-
     
     useEffect(() => {
         const fetchTokenData = async () => {
