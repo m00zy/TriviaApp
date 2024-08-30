@@ -119,7 +119,7 @@ export default function QuestionPage() {
                                 <label htmlFor={`answer-${index}`}>{toTitleCase(he.decode(answer))}</label>
                             </div>
                         ))}
-                        <input type='submit' value='Submit'></input>
+                        <input type='submit' value='Next'></input>
                     </Form>
                 </div>
             </div>
