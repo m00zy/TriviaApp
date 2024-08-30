@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { QuizContext } from '../../quizContext';
 
-export default function ResultsHistory() {
+export default function ResultsHistory(categories) {
     const { results } = useContext(QuizContext);
     return (
         <div className='results-history-container'>
@@ -19,7 +19,7 @@ export default function ResultsHistory() {
                 <tbody>
                     {results.map((result, index) => (
                         <tr key={index}>
-                            <td>{result['category']}</td>
+                            <td>{categories.categories[parseInt(result['category']) - 9]}</td>
                             <td>{result['difficulty']}</td>
                             <td>{result['num-questions']}</td>
                             <td>{result['score']}</td>

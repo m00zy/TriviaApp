@@ -16,7 +16,7 @@ export default function Home () {
         <div>
             <Welcome />
             <Settings categories={categories}/>
-            <ResultsHistory />
+            <ResultsHistory categories={categories}/>
         </div>
     );
 }
