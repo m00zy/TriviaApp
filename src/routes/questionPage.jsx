@@ -112,11 +112,11 @@ export default function QuestionPage() {
                                 <input 
                                     type="radio" 
                                     id={`answer-${index}`} 
-                                    value={toTitleCase(answer)} 
+                                    value={answer} 
                                     name='answer'
                                     required
                                 />
-                                <label htmlFor={`answer-${index}`}>{he.decode(answer)}</label>
+                                <label htmlFor={`answer-${index}`}>{toTitleCase(he.decode(answer))}</label>
                             </div>
                         ))}
                         <input type='submit' value='Submit'></input>
