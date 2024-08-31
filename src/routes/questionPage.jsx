@@ -62,7 +62,12 @@ export default function QuestionPage() {
     }, []);
 
     if (!questions.length) {
-        return <p>Loading...</p>;
+
+        return (
+            <div className='loading-page'>
+                <p>Loading...</p>
+            </div>
+        );
     }
 
     const currQuestion = questions[questionIndex];

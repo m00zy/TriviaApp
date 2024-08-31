@@ -1,0 +1,15 @@
+.home {
+    display: flex;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.left-container {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-container {
+    width: 35%;
+}

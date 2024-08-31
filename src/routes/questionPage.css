@@ -1,5 +1,13 @@
 .question-page {
-    font-family:'Times New Roman', Times, serif
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.loading-page {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 5rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 10rem;
 }
 
 .question-header-container {
