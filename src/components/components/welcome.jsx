@@ -4,7 +4,7 @@ export default function Welcome() {
     return (
         <div className='welcome-container'>
             <div className='welcome'>
-                <p>TRIVIA GAME</p>
+                <p>WELCOME TO TRIVIA!</p>
             </div>
         </div>
     );

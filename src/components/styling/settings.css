@@ -7,15 +7,28 @@
 
 .settings {
     display: flex;
-    width: 70%;
-    margin-top: 6rem;
-    margin-left: 8rem;
-    justify-content: space-around;
+    margin-top: 8rem;
 }
 
 .setting {
     display: inline-flex;
     flex-direction: column;
-    margin-right: 10rem;
+    margin-right: 3rem;
     gap: 1rem;
+    font-size: 20px;
+}
+
+.setting input {
+    font-size: 13px;
+}
+
+
+.submit {
+    margin-left: 18.5rem;
+    margin-top: 5rem;
+}
+
+.submit button {
+    font-size: 16px;
+    border-radius: 5px;
 }

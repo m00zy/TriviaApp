@@ -2,6 +2,7 @@ import { useLocation, useNavigate, Form } from 'react-router-dom';
 import { useState, useEffect, useRef, useContext } from 'react';
 import { fetchQuestions, fetchToken } from '../services/triviaService';
 import { QuizContext } from '../quizContext';
+import './questionPage.css'
 
 import he from 'he';
 
@@ -9,18 +10,19 @@ export default function QuestionPage() {
     const [questions, setQuestions] = useState([]);
     const [questionIndex, setQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
-    const [selectedValue, setSelectedValue] = useState('');
     const { addResult } = useContext(QuizContext);
     const location = useLocation();
     const settings = location.state;
     const navigate = useNavigate()
     const formRef = useRef(null);
 
-    const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-    };
-
     
+    function toTitleCase(str) {
+        return str.split(' ').map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }).join(' ');
+    }
+
     useEffect(() => {
         const fetchTokenData = async () => {
             try {
@@ -60,23 +62,18 @@ export default function QuestionPage() {
     }, []);
 
     if (!questions.length) {
-        return <p>Loading...</p>;
-    }
 
-
-    const titleCase = (str) => {
-        var splitStr = str.toLowerCase().split(' ');
-        for (var i = 0; i < splitStr.length; i++) {
-            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-        }
-        return splitStr.join(' '); 
+        return (
+            <div className='loading-page'>
+                <p>Loading...</p>
+            </div>
+        );
     }
 
     const currQuestion = questions[questionIndex];
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSelectedValue('');
         const formData = new FormData(e.target);
         if(formData.get('answer') === currQuestion.correct_answer) {
             setScore(score => score + 1);
@@ -112,20 +109,22 @@ export default function QuestionPage() {
             <div className='question-container'>
                 <div className='question'>
                     <p>{he.decode(currQuestion.question)}</p>
+                </div>
+                <div className='answers'>
                     <Form onSubmit={handleSubmit} ref={formRef}>
                         {currQuestion.shuffledAnswers.map((answer, index) => (
                             <div key={index}>
                                 <input 
                                     type="radio" 
                                     id={`answer-${index}`} 
-                                    value={titleCase(answer)} 
+                                    value={answer} 
                                     name='answer'
-                                    onChange={handleChange}
+                                    required
                                 />
-                                <label htmlFor={`answer-${index}`}>{he.decode(answer)}</label>
+                                <label htmlFor={`answer-${index}`}>{toTitleCase(he.decode(answer))}</label>
                             </div>
                         ))}
-                        <input type='submit' value='Submit' disabled={!selectedValue}></input>
+                        <input type='submit' value='Next'></input>
                     </Form>
                 </div>
             </div>
