@@ -8,6 +8,7 @@
 .settings {
     display: flex;
     margin-top: 8rem;
+    padding-left: 3rem;
 }
 
 .setting {
