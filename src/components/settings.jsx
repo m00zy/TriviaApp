@@ -25,7 +25,7 @@ export default function Settings( {categories} ) {
                 <Form className='max-w-sm mx-auto' onSubmit={handleSubmit}>
                     <div className='pt-4'>
                         <label htmlFor='num-questions' className='block py-2 text-xl'>Number of Questions:</label>
-                        <input name='num-questions' type='number' min='5' max='50' defaultValue='5' className='w-full h-9 text-lg px-2.5 py-5 border border-gray-300 rounded-lg required'></input>
+                        <input name='num-questions' type='number' min='5' max='50' defaultValue='5' className='w-full h-9 text-lg px-3 py-5 border border-gray-300 rounded-lg required'></input>
                         <p className='text-gray-600 text-sm opacity-50'>Choose from 5 up to 50 questions</p>
                     </div>
                     <div className="relative inline-block w-full py-4">
