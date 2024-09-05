@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
-import { QuizContext } from '../quizContext';
+import React from 'react';
 
-export default function ResultsHistory(categories) {
-    const { results } = useContext(QuizContext);
+export default function ResultsHistory( {categories, results} ) {
     return (
         <div>
             <p className='w-auto text-center text-3xl p-5'>Previous Results</p>
@@ -19,7 +17,7 @@ export default function ResultsHistory(categories) {
                 <tbody>
                     {results.map((result, index) => (
                         <tr key={index} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-                            <td className='py-2'>{categories.categories[parseInt(result['category']) - 9]}</td>
+                            <td className='py-2'>{categories[parseInt(result['category']) - 9]}</td>
                             <td>{result['difficulty'][0].toUpperCase() + result['difficulty'].slice(1)}</td>
                             <td>{result['num-questions']}</td>
                             <td>{result['score']}</td>

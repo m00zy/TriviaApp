@@ -22,7 +22,7 @@ export default function Settings( {categories} ) {
     return (
         <div className='my-10'>
             <div className='flex flex-col'>
-                <Form class='max-w-sm mx-auto' onSubmit={handleSubmit}>
+                <Form className='max-w-sm mx-auto' onSubmit={handleSubmit}>
                     <div className='pt-4'>
                         <label htmlFor='num-questions' className='block py-2 text-xl'>Number of Questions:</label>
                         <input name='num-questions' type='number' min='5' max='50' defaultValue='5' className='w-full h-9 text-lg px-2.5 py-5 border border-gray-300 rounded-lg required'></input>

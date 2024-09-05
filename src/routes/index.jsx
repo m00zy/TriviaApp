@@ -3,6 +3,8 @@ import Settings from '../components/settings';
 import ResultsHistory from '../components/resultsHistory';
 import { fetchCategories } from '../services/triviaService';
 import { useLoaderData } from 'react-router-dom'; 
+import { useContext } from 'react'
+import { QuizContext } from '../quizContext';
 
 export async function loader() {
     const categories = await fetchCategories();
@@ -10,6 +12,7 @@ export async function loader() {
 }
 
 export default function Home () {
+    const { results } = useContext(QuizContext);
     const { categories } = useLoaderData();
     return (
         <div className='w-screen h-screen'>
@@ -20,7 +23,8 @@ export default function Home () {
                         <Settings categories={categories}/>
                     </div>
                     <div className='w-3/4 mx-auto'>
-                        <ResultsHistory categories={categories}/>
+                    {console.log(results)}
+                        {results.length > 0 ? <ResultsHistory categories={categories} results={results}/> : null}
                     </div>
                 </div>
             </div>
