@@ -1,7 +1,7 @@
 import Welcome from '../components/components/welcome';
 import Settings from '../components/components/settings';
 import ResultsHistory from '../components/components/resultsHistory';
-import './index.css';
+// import './index.css';
 import { fetchCategories } from '../services/triviaService';
 import { useLoaderData } from 'react-router-dom'; 
 
@@ -17,7 +17,7 @@ export default function Home () {
     return (
         <div className='home-container'>
             <div className='home'>
-                <div className='left-container'>
+                <div className='text-blue-100'>
                     <Welcome />
                     <Settings categories={categories}/>
                 </div>

@@ -10,6 +10,7 @@ import Results from './routes/results';
 import { loader as categoriesLoader } from './routes/index';
 import ErrorPage from './error';
 import { QuizProvider } from './quizContext';
+import './main.css'
 
 const router = createBrowserRouter([
   {
