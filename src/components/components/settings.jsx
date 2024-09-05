@@ -1,4 +1,4 @@
-import '../styling/settings.css';
+
 import { Form, useNavigate } from "react-router-dom";
 
 export default function Settings( {categories} ) {

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { QuizContext } from '../../quizContext';
-import '../styling/resultsHistory.css';
 
 export default function ResultsHistory(categories) {
     const { results } = useContext(QuizContext);

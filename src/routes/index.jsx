@@ -1,7 +1,6 @@
 import Welcome from '../components/components/welcome';
 import Settings from '../components/components/settings';
 import ResultsHistory from '../components/components/resultsHistory';
-// import './index.css';
 import { fetchCategories } from '../services/triviaService';
 import { useLoaderData } from 'react-router-dom'; 
 
