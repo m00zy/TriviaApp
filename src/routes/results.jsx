@@ -1,6 +1,5 @@
 import HomeButton from '../components/homeButton';
 import { useLocation } from 'react-router-dom';
-import './results.css';
 
 export default function Results () {
     
