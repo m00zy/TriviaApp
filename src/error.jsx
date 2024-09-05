@@ -1,5 +1,5 @@
 import { useRouteError } from 'react-router-dom';
-import HomeButton from './components/components/homeButton';
+import HomeButton from './components/homeButton';
 import Home from './routes';
 
 function ErrorPage() {

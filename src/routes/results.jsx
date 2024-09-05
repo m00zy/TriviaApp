@@ -1,4 +1,4 @@
-import HomeButton from '../components/components/homeButton';
+import HomeButton from '../components/homeButton';
 import { useLocation } from 'react-router-dom';
 import './results.css';
 
