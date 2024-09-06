@@ -74,7 +74,9 @@ export default function Settings( {categories} ) {
                     </div>
 
                     <div className='pt-8'>
-                        <button type='submit' className='block w-1/2 p-2 bg-blue-500 text-white font-medium text-lg rounded-lg hover:bg-blue-700 mx-auto'>Start</button>
+                        <button type='submit' className='block w-1/2 p-2 bg-blue-500 text-white font-medium 
+                        text-lg rounded-lg hover:bg-blue-700 mx-auto 
+                        transform hover:scale-105 duration-150 '>Start</button>
                     </div>
                 </Form>
                 

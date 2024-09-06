@@ -18,7 +18,7 @@ export default function Home () {
         <div className='w-screen h-screen'>
             <div className='w-2/3 mx-auto'>
                 <div className='pt-36 flex flex-col'>
-                    <div className='w-1/2 mx-auto '>
+                    <div className='w-1/2 mx-auto'>
                         <Welcome />
                         <Settings categories={categories}/>
                     </div>

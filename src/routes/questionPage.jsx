@@ -102,17 +102,17 @@ export default function QuestionPage() {
     
     return (
         <div className='w-screen h-screen'>
-            <div className='w-full text-right p-9 text-3xl font-inter text-gray-700'>
+            <div className='w-full text-right p-12 text-3xl font-inter text-gray-700'>
                 <p>Question {questionIndex + 1} / {questions.length}</p>
             </div>
             <div className='w-full h-3/4 my-36 flex flex-col items-center'>
-                <div className='text-center text-5xl w-2/3 p p-10 h-2/5 font-inter text-gray-700 leading-snug'>
+                <div className='text-center text-5xl w-2/3 h-1/3 font-inter text-gray-700 leading-snug'>
                     <p className='my-12'>{he.decode(currQuestion.question)}</p>
                 </div>
                 <Form onSubmit={handleSubmit} 
                 ref={formRef}
                 className='w-full h-2/3'>
-                    <div className='mx-auto grid w-3/4 grid-rows-2 grid-cols-2 h-3/4 justify-items-center auto-cols-max gap-1'>
+                    <div className='mx-auto grid w-3/4 grid-rows-2 grid-cols-2 h-3/4 justify-items-center auto-cols-max gap-5'>
                     {currQuestion.shuffledAnswers.map((answer, index) => (
                         <AnswerCard 
                         answer={toTitleCase(he.decode(answer))} 
@@ -121,8 +121,10 @@ export default function QuestionPage() {
                         className={`row-start-${index < 2 ? 1 : 2} col-start-${index % 2 === 0 ? 1 : 0}`}/>
                     ))}
                     </div>
-                    <input type='submit' value='NEXT' 
-                    className='py-8 block mx-auto text-4xl font-inter tracking-wide cursor-pointer hover:text-red-700 text-gray-700'>
+                    <input type='submit' value='Next' 
+                    className='mt-14 px-8 py-4 block mx-auto text-3xl font-inter tracking-wide cursor-pointer 
+                    bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 hover:text-white 
+                    hover:shadow-lg transition-all duration-200 ease-in-out transform hover:scale-105'>
                     </input>
                 </Form>
             </div>
