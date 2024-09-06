@@ -100,14 +100,12 @@ export default function QuestionPage() {
     }
     
     return (
-        <div className='question-page'>
-            <div className='question-header-container'>
-                <div className='question-header'>
-                    <p>Question {questionIndex + 1} / {questions.length}</p>
-                </div>
+        <div className='w-screen h-screen'>
+            <div className='w-full text-right p-9 text-xl'>
+                <p>Question {questionIndex + 1} / {questions.length}</p>
             </div>
-            <div className='question-container'>
-                <div className='question'>
+            <div className='w-full h-2/3 my-36 flex flex-col items-center'>
+                <div className='text-center text-4xl w-2/3 p p-16'>
                     <p>{he.decode(currQuestion.question)}</p>
                 </div>
                 <div className='answers'>
