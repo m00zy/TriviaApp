@@ -122,7 +122,7 @@ export default function QuestionPage() {
                     ))}
                     </div>
                     <input type='submit' value='NEXT' 
-                    className='py-8 block mx-auto text-4xl font-inter tracking-wide cursor-pointer hover:text-blue-700 text-gray-700'>
+                    className='py-8 block mx-auto text-4xl font-inter tracking-wide cursor-pointer hover:text-red-700 text-gray-700'>
                     </input>
                 </Form>
             </div>
