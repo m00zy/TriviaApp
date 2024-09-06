@@ -23,7 +23,7 @@ export default function Settings( {categories} ) {
         <div className='my-10'>
             <div className='flex flex-col'>
                 <Form className='max-w-sm mx-auto' onSubmit={handleSubmit}>
-                    <div className='pt-4'>
+                    <div className='py-2'>
                         <label htmlFor='num-questions' className='block py-2 text-xl'>Number of Questions:</label>
                         <input name='num-questions' type='number' min='5' max='50' defaultValue='5' className='w-full h-9 text-lg px-3 py-5 border border-gray-300 rounded-lg required'></input>
                         <p className='text-gray-600 text-sm opacity-50'>Choose from 5 up to 50 questions</p>
@@ -32,7 +32,7 @@ export default function Settings( {categories} ) {
                         <label htmlFor="category" className="block py-2 text-xl">Category:</label>
                         <select
                             name="category"
-                            className="w-full h-12 appearance-none border border-gray-300 rounded-lg p-2.5 pr-10" // Add pr-10 to make space for the arrow
+                            className="w-full h-12 appearance-none border border-gray-300 rounded-lg p-2.5 pr-10"
                         >
                             {categories.map((category, index) => {
                             return <option key={category} value={index + 9}>{category}</option>; /* The category number is index + 9 */
