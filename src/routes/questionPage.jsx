@@ -112,7 +112,7 @@ export default function QuestionPage() {
                 <Form onSubmit={handleSubmit} 
                 ref={formRef}
                 className='w-full h-2/3'>
-                    <div className='mx-auto grid w-3/4 grid-rows-2 grid-cols-2 h-3/4 justify-items-center auto-cols-max gap-5'>
+                    <div className='mx-auto grid w-3/4 grid-rows-2 grid-cols-2 h-3/4 justify-items-center auto-cols-max gap-24'>
                     {currQuestion.shuffledAnswers.map((answer, index) => (
                         <AnswerCard 
                         answer={toTitleCase(he.decode(answer))} 
